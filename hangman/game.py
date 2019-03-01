@@ -55,15 +55,9 @@ class HangmanGame(object):
     
     WORD_LIST = ['rmotr', 'python', 'awesome']
     
-    def isFinished(self):
-        if isWon(self)==True or isLost(self)==True:
-            return True
-    def isWon(self):
-        if self.isWon==True:
-            return True
-    def isLost(self):
-        if self.isLost==True:
-            return True
+    isFinished = False
+    isWon = False
+    isLost = False
     
     @classmethod
     def select_random_word(cls,wordList=WORD_LIST):
@@ -77,13 +71,10 @@ class HangmanGame(object):
         self.answer = HangmanGame.select_random_word(wordList)
         self.word = GuessWord(self.answer)
         self.previous_guesses = []
-        self.isFinished = False
-        self.isWon = False
-        self.isLost = False
     
     
     def guess(self,letter=''):
-        if self.isFinished==True:
+        if isFinished==True:
             raise GameFinishedException(Exception)
             
         thisGuess = self.word
@@ -91,8 +82,8 @@ class HangmanGame(object):
         
         
         if thisGuess.masked == self.answer:
-            self.isWon = True
-            self.isFinished = True
+            isWon = True
+            isFinished = True
             raise GameWonException("Game Won")
             
             
@@ -100,8 +91,8 @@ class HangmanGame(object):
             self.remaining_misses-=1
             self.previous_guesses.append(letter.lower())
             if self.remaining_misses==0:
-                self.isLost = True
-                self.isFinished = True
+                isLost = True
+                isFinished = True
                 raise GameLostException("Game Lost")  
 
         else:
@@ -111,3 +102,6 @@ class HangmanGame(object):
     
                 
         return thisGuess.perform_attempt(letter) 
+    
+    
+
