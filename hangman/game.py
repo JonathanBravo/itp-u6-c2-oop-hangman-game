@@ -98,6 +98,7 @@ class HangmanGame(object):
         if thisGuess.masked == self.answer:
             self.won = True
             self.finish = True
+            self.previous_guesses.append(letter.lower())
             raise GameWonException("Game Won")
             
             
@@ -117,7 +118,6 @@ class HangmanGame(object):
                 
         return thisGuess.perform_attempt(letter) 
     
-
     
     
 
