@@ -74,7 +74,7 @@ class HangmanGame(object):
     
     
     def guess(self,letter=''):
-        if isFinished==True:
+        if self.isFinished == True:
             raise GameFinishedException(Exception)
             
         thisGuess = self.word
@@ -82,8 +82,8 @@ class HangmanGame(object):
         
         
         if thisGuess.masked == self.answer:
-            isWon = True
-            isFinished = True
+            self.isWon = True
+            self.isFinished = True
             raise GameWonException("Game Won")
             
             
@@ -91,8 +91,8 @@ class HangmanGame(object):
             self.remaining_misses-=1
             self.previous_guesses.append(letter.lower())
             if self.remaining_misses==0:
-                isLost = True
-                isFinished = True
+                self.isLost = True
+                self.isFinished = True
                 raise GameLostException("Game Lost")  
 
         else:
@@ -102,6 +102,9 @@ class HangmanGame(object):
     
                 
         return thisGuess.perform_attempt(letter) 
+    
+    
+
     
     
 
