@@ -55,17 +55,17 @@ class HangmanGame(object):
     
     WORD_LIST = ['rmotr', 'python', 'awesome']
     
-    def isFinished(self):
+    def is_finished(self):
         if self.finish==True:
             return True
         else:
             return False
-    def isWon(self):
+    def is_won(self):
         if self.won==True:
             return True
         else:
             return False
-    def isLost(self):
+    def is_lost(self):
         if self.lost==True:
             return True
         else:
@@ -116,10 +116,6 @@ class HangmanGame(object):
     
                 
         return thisGuess.perform_attempt(letter) 
-    
-    
-
-    
     
 
     
