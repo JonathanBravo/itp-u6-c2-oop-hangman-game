@@ -1,4 +1,3 @@
-from .exceptions import *
 import random
 
 class GuessAttempt(object):\
@@ -111,5 +110,3 @@ class HangmanGame(object):
     
                 
         return thisGuess.perform_attempt(letter) 
-    
-    
